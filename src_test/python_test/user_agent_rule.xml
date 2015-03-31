@@ -1,0 +1,225 @@
+<root>
+        <information>
+                <iceyefiletype>user_agent_rule</iceyefiletype>
+                <version>6.0.1.1</version>
+                <date>2013-12-13</date>
+                <name>被动扫描useragent规则</name>
+                <copyright>(c)1999-2009 NSFocus</copyright>
+        </information>
+
+	<os>
+	  <rule  keyword="windows nt 6.3"   name="Windows 8.1"      />
+	  <!--rule  keyword="Windows NT 6.2; WOW64"   name="Windows 2012" /-->
+	  <!--rule  keyword="windows nt 6.2"   name="Windows 8"        /-->
+	  <rule  keyword="windows nt 6.1"   name="Windows 7"        />
+	  <rule  keyword="windows nt 6.0"   name="Windows Vista"    />
+	  <rule  keyword="windows nt 5.2"   name="Windows 2003"     />
+	  <rule  keyword="windows nt 5.1"   name="Windows XP"       />
+	  <rule  keyword="windows nt 5.01"  name="Windows 2000"     />
+	  <rule  keyword="windows nt 5.0"   name="Windows 2000"     />
+	  <!--rule  keyword="windows"	        name="Windows"          /-->
+	  <!--rule  keyword="windows nt 6.0"   name="Windows 2008" /-->
+	  <!--rule  keyword="windows nt 6.1"   name="Windows 2008 R2(server of win7)" /-->
+	  <!--rule  keyword="windows nt 6.2"   name="Windows 2012(server of win8)" /-->
+	  <!--rule  keyword="Windows nt 4.0"  name="Windows NT"   /-->
+	  <!--rule  keyword="winnt4.0"	    name="Windows NT"     /-->
+	  <!--rule  keyword="winnt 4.0"	    name="Windows NT"     /-->
+	  <!--rule  keyword="winnt"		    name="Windows NT"     /-->
+	  <!--rule  keyword="windows 98"	name="Windows 98"     /-->
+	  <!--rule  keyword="win98"		    name="Windows 98"     /-->
+	  <!--rule  keyword="Win 9x 4.90 "	name="Windows ME"     /-->
+	  <!--rule  keyword="windows 95"	name="Windows 95"     /-->
+	  <!--rule  keyword="win95"		    name="Windows 95"     /-->
+	  <!--rule  keyword="Windows CE"	name="Windows CE"     /-->
+	  <rule  keyword="Ubuntu"		    name="Ubuntu"           />
+	  <rule  keyword="debian"	        name="Debian"           />
+	  <rule  keyword="Android"          name="Android"          />
+	  <rule  keyword="gnu"		        name="Linux"            />
+	  <rule  keyword="linux"            name="Linux"            />
+	  <rule  keyword="freebsd"	        name="FreeBSD"          />
+	  <rule  keyword="openbsd"	        name="OpenBSD"          />
+	  <rule  keyword="sunos"		    name="Sun Solaris"      />
+	  <rule  keyword="aix"		        name="AIX"              />
+	  <rule  keyword="hp-ux"		    name="HP-UX"            />
+	  <rule  keyword="netbsd"	        name="NetBSD"           />
+	  <rule  keyword="unix"		        name="Unix"             />	  
+	  <!--rule  keyword="beos"		    name="BeOS"           /-->
+	  <!--rule  keyword="apachebench"	name="ApacheBench"    /-->
+	  <!--rule  keyword="irix"		    name="Irix"           /-->
+	  <!--rule  keyword="osf"		    name="DEC OSF"        /-->
+	  <!--rule  keyword="bsdi"		    name="BSDi"           /-->
+	  <rule  keyword="iPhone OS"		name="iOS"              />
+	  <rule  keyword="iPad"		        name="iOS"              />
+	  <rule  keyword="Mac OS X"		    name="Mac OS X"         />
+	  <!--rule  keyword="ppc mac"	    name="Power PC Mac"   /-->
+	  <!--rule  keyword="ppc"		    name="Macintosh"      /-->
+	</os>
+
+	<browser>
+	  <rule  keyword="QQBrowser"	    name="QQ"               />
+	  <rule  keyword="360SE"	        name="360"              />	 
+	  <rule  keyword="UCBrowser"	    name="UC"               />	 
+	  <rule  keyword="UBrowser"	        name="UC"               />	 
+	  <rule  keyword="Maxthon"	        name="Maxthon"          />	 
+	  <rule  keyword="LBBROWSER"	    name="Liebao"           />	 
+	  <rule  keyword="MetaSr"	        name="Sogou"            />	 
+	  <rule  keyword="TaoBrowser"	    name="Taobao"           />	 
+	  <rule  keyword="TheWorld"	        name="TheWorld"         />	 
+	  <rule  keyword="OPR"		        name="Opera"            />
+	  <rule  keyword="Chrome"	        name="Chrome"           />
+	  <rule  keyword="Opera"		    name="Opera"            />
+      <rule  keyword="Trident/7.0"		name="IE11"             />
+      <rule  keyword="Trident/6.0"		name="IE10"             />
+      <rule  keyword="Trident/5.0"		name="IE9"              />
+      <rule  keyword="Trident/4.0"		name="IE8"              />
+	  <rule  keyword="MSIE"		        name="IE"               />
+	  <rule  keyword="Internet Explorer"   name="IE"            />
+	  <rule  keyword="Firefox"	        name="Firefox"          />
+	  <rule  keyword="OmniWeb"	        name="OmniWeb"          />
+	  <rule  keyword="Safari"	        name="Safari"           />
+	  <!--rule  keyword="Netscape"	    name="Netscape"       /-->
+	  <!--rule  keyword="Chimera"	    name="Chimera"        /-->
+	  <!--rule  keyword="Phoenix"	    name="Phoenix"        /-->
+	  <!--rule  keyword="Camino"	    name="Camino"         /-->
+	  <!--rule  keyword="Shiira"	    name="Shiira"         /-->
+	  <!--rule  keyword="Firebird"	    name="Firebird"       /-->
+	  <!--rule  keyword="Chromium"	    name="Chromium"       /-->
+	  <!--rule  keyword="Flock"		    name="Flock"          /-->
+	  <!--rule  keyword="Konqueror"	    name="Konqueror"      /-->
+	  <!--rule  keyword="icab"		    name="iCab"           /-->
+	  <!--rule  keyword="Lynx"		    name="Lynx"           /-->
+	  <!--rule  keyword="Links"		    name="Links"          /-->
+	  <!--rule  keyword="amaya"		    name="Amaya"          /-->
+	  <!--rule  keyword="IBrowse"	    name="IBrowse"        /-->	 
+	  <!--rule  keyword="Mozilla"	    name="Mozilla"        /-->
+	</browser>
+
+	<web_kernel>
+	  <rule  keyword="Trident"	        name="Trident"          />
+	  <rule  keyword="U2"	            name="U2"               />
+	  <rule  keyword="U3"	            name="U3"               />
+	  <rule  keyword="AppleWebKit"	    name="AppleWebKit"      />
+	  <rule  keyword="Gecko"	        name="Gecko"            />
+	  <rule  keyword="Presto"	        name="Presto"           />
+	  <rule  keyword="compatible"	    name="Trident"          />
+	</web_kernel>
+
+	<mobile>
+	  <rule  keyword="motorola"	        name="Motorola"         />
+	  <rule  keyword="nokia"		    name="Nokia"            />
+	  <rule  keyword="palm"		        name="Palm"             />
+	  <rule  keyword="elaine"	        name="Palm"             />
+	  <rule  keyword="iphone"	        name="Apple iPhone"     />
+	  <rule  keyword="ipad"		        name="iPad"             />
+	  <rule  keyword="ipod"		        name="Apple iPod Touch" />
+	  <rule  keyword="sony"		        name="Sony Ericsson"    />
+	  <rule  keyword="ericsson"	        name="Sony Ericsson"    />
+	  <rule  keyword="blackberry"       name="BlackBerry"       />
+	  <rule  keyword="lg"		        name="LG"               />
+	  <rule  keyword="htc"		        name="HTC"              />
+	  <rule  keyword="samsung"	        name="Samsung"          />
+	  <rule  keyword="sharp"		    name="Sharp"            />
+	  <rule  keyword="sie-"		        name="Siemens"          />
+	  <rule  keyword="alcatel"	        name="Alcatel"          />
+	  <rule  keyword="benq"		        name="BenQ"             />
+	  <rule  keyword="ipaq"		        name="HP iPaq"          />
+	  <rule  keyword="mot-"		        name="Motorola"         />
+	  <rule  keyword="nec-"		        name="NEC"              />
+	  <rule  keyword="panasonic"	    name="Panasonic"        />
+	  <rule  keyword="philips"	        name="Philips"          />
+	  <rule  keyword="zte"		        name="ZTE"              />
+	  <rule  keyword="symbian"	        name="Symbian"          />
+	  <rule  keyword="SymbianOS"	    name="SymbianOS"        />
+	  <rule  keyword="series60"	        name="Symbian S60"      />
+	  <rule  keyword="windows ce"	    name="Windows CE"       />
+	  <rule  keyword="mobile"	        name="Generic Mobile"   />
+	  <rule  keyword="wireless"	        name="Generic Mobile"   />
+	  <rule  keyword="j2me"		        name="Generic Mobile"   />
+	  <rule  keyword="midp"		        name="Generic Mobile"   />
+	  <rule  keyword="cldc"		        name="Generic Mobile"   />
+	  <rule  keyword="up.link"	        name="Generic Mobile"   />
+	  <rule  keyword="up.browser"	    name="Generic Mobile"   />
+	  <rule  keyword="smartphone"	    name="Generic Mobile"   />
+	  <rule  keyword="cellphone"	    name="Generic Mobile"   />
+	  <!--rule  keyword="playstation portable" name="PlayStation Portable" /-->
+	  <!--rule  keyword="sagem"		    name="Sagem"          /-->
+	  <!--rule  keyword="sanyo"		    name="Sanyo"          /-->
+	  <!--rule  keyword="spv"		    name="SPV"            /-->
+	  <!--rule  keyword="sendo"		    name="Sendo"          /-->
+	</mobile>
+
+	<virus>
+      <!--rule for KingSoft Anti-Virus-->
+	  <!--rule  keyword="fsigns.duba.net"	        name="KingSoft Anti-Virus" /-->
+	  <rule  keyword="rq.upgrade.cloud.duba.net"	name="KingSoft Anti-Virus" />
+	  <rule  keyword="rq.cct.cloud.duba.net"	name="KingSoft Anti-Virus" />
+	  <rule  keyword="ifr.duba.net"	            name="KingSoft Anti-Virus" />
+	  <rule  keyword="cloud-q.duba.net"	        name="KingSoft Anti-Virus" />
+      <!--rule for KingSoft PC Doctor-->
+	  <rule  keyword="up.ijinshan.com"	        name="KingSoft PC Doctor"  />
+	  <rule  keyword="stst.ijinshan.com"	    name="KingSoft PC Doctor"  />
+	  <rule  keyword="oudlib.ijinshan.com"	    name="KingSoft PC Doctor"  />
+
+      <!--rule for 360 -->
+	  <rule  keyword="tconf.f.360.cn"	        name="360"  />
+	  <rule  keyword="dl.360safe.com"	        name="360"  />
+	  <rule  keyword="qup.f.360.cn"	            name="360"  />
+	  <rule  keyword="update.360safe.com"	    name="360"  />
+	  <rule  keyword="tconf2.f.360.cn"	        name="360"  />
+	  <rule  keyword="locini.gslb.360safe.com"	name="360"  />
+	  <rule  keyword="tconf.f.qh-lb.com"	    name="360"  />
+	  <rule  keyword="conf.f.360.cn"	        name="360"  />
+	  <rule  keyword="qup.qh-lb.com"	        name="360"  />
+	  <rule  keyword="dl.qhcdn.com"	            name="360"  />
+
+      <!--rule for KV-->
+	  <rule  keyword="up.jiangmin.com"          name="KV"   />
+	  <rule  keyword="08update1.jiangmin.com"	name="KV"   />
+
+      <!--rule for AVAST-->
+	  <rule  keyword="update.avast.com"	    name="AVAST" />
+	  <rule  keyword=".u.avast.com"	        name="AVAST" />
+	  <rule  keyword="program.avast.com"	name="AVAST" />
+	  <rule  keyword="emupdate.avast.com"	name="AVAST" />
+      <rule  keyword="stats.avast.com"	    name="AVAST" />
+	  <rule  keyword="ping.avast.com"	    name="AVAST" />
+	  <rule  keyword=".sb.avast.com"	    name="AVAST" />
+
+      <!--rule for AntiVir-->
+	  <rule  keyword="personal.avira-update.com"	name="AntiVir" />
+	  <rule  keyword="personal.avira-cdn.com"	    name="AntiVir" />
+	  <rule  keyword="avstats.avira.com"	        name="AntiVir" />
+	  <rule  keyword="ipm.avira.com"	            name="AntiVir" />
+	  <rule  keyword="notifier.avira.com"	        name="AntiVir" />
+
+      <!--rule for RISING-->
+	  <rule  keyword="download.rising.net.cn"	name="RISING" />
+	  <rule  keyword="rscloud.rising.net.cn"	name="RISING" />
+	  <rule  keyword="cloudinfo.rising.com.cn"	name="RISING" />
+	  <rule  keyword="rsdownauto.rising.com.cn"	name="RISING" />
+
+      <!--rule for Kaspersky-->
+	  <rule  keyword=".geo.kaspersky.com"	    name="Kaspersky" />
+	  <rule  keyword="-geo.kaspersky-labs.com"	name="Kaspersky" />
+	  <rule  keyword="ksn-kddi.kaspersky-labs.com"	            name="Kaspersky" />
+	  <rule  keyword="activation-v2.kaspersky.com"	            name="Kaspersky" />
+
+      <!--rule for MSE-->
+	  <rule  keyword="go.microsoft.com"	            name="MSE" />
+	  <rule  keyword="www.go.microsoft.akadns.net"	name="MSE" />
+
+      <!--rule for Norton-->
+	  <rule  keyword="liveupdate.symantecliveupdate.com"        name="Norton" />
+	  <rule  keyword="stats.qalabs.symantec.com"	name="Norton" />
+	  <rule  keyword="stats.norton.com"	            name="Norton" />
+	  <rule  keyword="shasta-rrs.symantec.com"	    name="Norton" />
+	  <rule  keyword="csasmain.symantec.com"	    name="Norton" />
+	  <rule  keyword="liveupdate.symantec.d4p.net"	name="Norton" />
+
+      <!--rule for McAfee-->
+	  <rule  keyword="updatekeepalive.mcafee.com"	name="McAfee" />
+	  <rule  keyword="updatekeepalive.glb.mcafee.com"           name="McAfee" />
+	</virus>
+
+</root>
+

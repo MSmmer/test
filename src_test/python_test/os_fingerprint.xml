@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<root>
+    <information> 
+        <iceyefiletype>os fingerprint</iceyefiletype> 
+        <version>6.0.1.1</version> 
+        <date>2014-3-4</date> 
+        <name>被动扫描OS指纹</name> 
+        <copyright>(c)1999-2009 NSFocus</copyright> 
+    </information>
+    <os>
+        <!--comments for 'os/rule'
+             name: OS class, Linux/Unix/Window ...; 
+                   <take care!!!>MUST keep consistency with 'root/os_names/os/name' in 'asset_names.xml' 
+             version: special/further description
+             type: s/g==specified/generic, indicate accuracy of the signature
+             sig: signature, ver:ittl:olen:mss:wsize,scale:olayout:quirks:pclass
+                  <note>ver: 4/6/* == IPv4/IPv6/both
+                  <note>ittl: intial TTL used by OS
+                  <note>olen: length of IPv4 options or IPv6 extension headers
+                  <note>mss: maximum segment size, '*' to denote that MSS varies depending on the parameters 
+                             of sender's network link
+                  <note>wsize: window size, format in fixed value/mss*num/mtu*num/*
+                  <note>scale: window scaling factor, fixed value/*
+                  <note>olayout: comma-delimited layout and ordering of TCP options
+                                 eol+n  - explicit end of options, followed by n bytes of padding
+                                 nop    - no-op option
+                                 mss    - maximum segment size
+                                 ws     - window scaling
+                                 sok    - selective ACK permitted
+                                 sack   - selective ACK (should not be seen)
+                                 ts     - timestamp
+                                 ?n     - unknown option ID n
+                  <note>quirks: comma-delimited properties and quirks observed in IP or TCP
+                                df     - "don't fragment" set (probably PMTUD); ignored for IPv6
+                                id+    - DF set but IPID non-zero; ignored for IPv6
+                                id-    - DF not set but IPID is zero; ignored for IPv6
+                                ecn    - explicit congestion notification support
+                                0+     - "must be zero" field not zero; ignored for IPv6
+                                flow   - non-zero IPv6 flow ID; ignored for IPv4
+
+                                seq-   - sequence number is zero
+                                ack+   - ACK number is non-zero, but ACK flag not set
+                                ack-   - ACK number is zero, but ACK flag set
+                                uptr+  - URG pointer is non-zero, but URG flag not set
+                                urgf+  - URG flag used
+                                pushf+ - PUSH flag used
+
+                                ts1-   - own timestamp specified as zero
+                                ts2+   - non-zero peer timestamp on initial SYN
+                                opt+   - trailing non-zero data in options segment
+                                exws   - excessive window scaling factor (> 14)
+                                bad    - malformed TCP options
+                  <note>pclass: payload size classification, 0/+/* == zero/non-zero/any
+             -->
+        <!--for Linux 3.x-->
+        <rule version="3.x" name="Linux" sig="*:64:0:*:mss*10,7:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="3.x" name="Linux" sig="*:64:0:*:mss*10,4:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="3.x" name="Linux" sig="*:64:0:*:mss*10,5:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <!--for Linux 2.6.x-->
+        <rule version="2.6.x" name="Linux" sig="*:64:0:*:mss*4,6:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x" name="Linux" sig="*:64:0:*:mss*10,6:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x" name="Linux" sig="*:64:0:*:mss*4,7:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x" name="Linux" sig="*:64:0:*:mss*4,8:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <!--for Linux 2.4.x-->
+        <rule version="2.4.x" name="Linux" sig="*:64:0:*:mss*4,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.4.x" name="Linux" sig="*:64:0:*:mss*4,1:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.4.x" name="Linux" sig="*:64:0:*:mss*4,2:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <!--for Linux 2.2.x-->
+        <rule version="2.2.x" name="Linux" sig="*:64:0:*:mss*11,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.2.x" name="Linux" sig="*:64:0:*:mss*20,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.2.x" name="Linux" sig="*:64:0:*:mss*22,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <!--for Linux 2.0-->
+        <rule version="2.0" name="Linux" sig="*:64:0:*:mss*12,0:mss::0"  type="s"/>
+        <rule version="2.0" name="Linux" sig="*:64:0:*:16384,0:mss::0"  type="s"/>
+        <!--for Linux other-->
+        <rule version="3.x(loopback)" name="Linux" sig="*:64:0:16396:mss*2,4:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="3.x(loopback)" name="Linux" sig="*:64:0:16376:mss*2,4:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x(loopback)" name="Linux" sig="*:64:0:16396:mss*2,2:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x(loopback)" name="Linux" sig="*:64:0:16376:mss*2,2:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.4.x(loopback)" name="Linux" sig="*:64:0:16396:mss*2,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.2.x(loopback)" name="Linux" sig="*:64:0:3884:mss*8,0:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="2.6.x(Google crawler)" name="Linux" sig="4:64:0:1430:mss*4,6:mss,sok,ts,nop,ws::0"  type="s"/>
+        
+        <!--for Android-->
+        <rule version="" name="Android" sig="*:64:0:*:mss*44,1:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+        <rule version="" name="Android" sig="*:64:0:*:mss*44,3:mss,sok,ts,nop,ws:df,id+:0"  type="s"/>
+
+        <!--for Windows xp-->
+        <!--rule version="" name="Windows XP" sig="*:128:0:*:65535,1:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows XP" sig="*:128:0:*:65535,0:mss,nop,nop,sok:df,id+:0"  type="s"/-->
+        <rule version="" name="Windows XP" sig="*:128:0:*:16384,0:mss,nop,nop,sok:df,id+:0"  type="s"/>
+        <!--rule version="" name="Windows XP" sig="*:128:0:*:65535,0:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows XP" sig="*:128:0:*:65535,2:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--for Windows 7-->
+        <!--rule version="" name="Windows 7" sig="*:128:0:*:8192,2:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows 7" sig="*:128:0:*:8192,0:mss,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows 7" sig="*:128:0:*:65535,0:mss,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows 7" sig="*:128:0:*:8192,8:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <!--rule version="" name="Windows 7" sig="*:128:0:*:8192,2:mss,nop,ws,sok,ts:df,id+:0"  type="s"/-->
+        <!--rule version="(Websense crawler)" name="Windows 7" sig="*:64:0:1380:mss*4,6:mss,nop,nop,ts,nop,ws:df,id+:0"  type="s"/-->
+        <!--rule version="(Websense crawler)" name="Windows 7" sig="*:64:0:1380:mss*4,7:mss,nop,nop,ts,nop,ws:df,id+:0"  type="s"/-->
+        <!--for Windows 2008-->
+        <!--for Windows 8-->
+        <rule version="" name="Windows 8" sig="*:128:0:*:65535,3:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/>
+		<rule version="" name="Windows 8" sig="*:128:0:*:65535,8:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/>
+        <!--for Windows 8.1-->
+        <!--rule version="" name="Windows 8.1" sig="*:64:0:*:8192,8:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/-->
+        <rule version="" name="Windows 8.1" sig="*:64:0:*:65535,8:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/>
+		
+		<!--for Windows 2012-->
+		<rule version="" name="Windows 2012" sig="*:128:0:*:8192,8:mss,nop,ws,nop,nop,sok:df,id+,ecn:0"  type="s"/>
+		<rule version="" name="Windows 2012" sig="*:128:0:*:65535,8:mss,nop,ws,nop,nop,sok:df,id+,ecn:0"  type="s"/>
+		
+        <!--for Mac OS X-->
+        <rule version="10.x" name="Mac OS X" sig="*:64:0:*:65535,1:mss,nop,ws,nop,nop,ts,sok,eol+1:df,id+:0"  type="s"/>
+        <rule version="10.x" name="Mac OS X" sig="*:64:0:*:65535,3:mss,nop,ws,nop,nop,ts,sok,eol+1:df,id+:0"  type="s"/>
+        <!--rule version="10.x" name="Mac OS X" sig="*:64:0:*:65535,4:mss,nop,ws,nop,nop,ts,sok,eol+1:df,id+:0"  type="s"/-->
+        <!--for iOS-->
+        <rule version="iPhone or iPad" name="iOS" sig="*:64:0:*:65535,2:mss,nop,ws,nop,nop,ts,sok,eol+1:df,id+:0"  type="s"/>
+
+        <!--for FreeBSD-->
+        <rule version="9.x" name="FreeBSD" sig="*:64:0:*:65535,6:mss,nop,ws,sok,ts:df,id+:0"  type="s"/>
+        <rule version="8.x" name="FreeBSD" sig="*:64:0:*:65535,3:mss,nop,ws,sok,ts:df,id+:0"  type="s"/>
+
+        <!--for OpenBSD-->
+        <rule version="3.x" name="OpenBSD" sig="*:64:0:*:16384,0:mss,nop,nop,sok,nop,ws,nop,nop,ts:df,id+:0"  type="s"/>
+        <rule version="4.x-5.x" name="OpenBSD" sig="*:64:0:*:16384,3:mss,nop,nop,sok,nop,ws,nop,nop,ts:df,id+:0"  type="s"/>
+        
+        <!--for NetBSD-->
+        <rule version="" name="NetBSD" sig="*:64:0:*:32768,3:mss,nop,ws,sok,nop,nop,nop,nop,ts:df:0"  type="s"/>
+        
+        <!--for Sun Solaris-->
+        <rule version="8" name="Sun Solaris" sig="*:64:0:*:32850,1:nop,ws,nop,nop,ts,nop,nop,sok,mss:df,id+:0"  type="s"/>
+        <rule version="10" name="Sun Solaris" sig="*:64:0:*:mss*34,0:mss,nop,ws,nop,nop,sok:df,id+:0"  type="s"/>
+
+        <!--for Unix-->
+        <rule version="BaiduSpider" name="Unix" sig="*:64:0:1460:mss*4,7:mss,sok,nop,nop,nop,nop,nop,nop,nop,nop,nop,nop,nop,ws:df,id+:0"  type="s"/>
+        <rule version="BaiduSpider" name="Unix" sig="*:64:0:1460:mss*4,2:mss,sok,nop,nop,nop,nop,nop,nop,nop,nop,nop,nop,nop,ws:df,id+:0"  type="s"/>
+    </os>
+</root>
+
