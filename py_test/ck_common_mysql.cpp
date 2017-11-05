@@ -10,7 +10,7 @@ extern "C" {
 #endif
 #include "iniparser.h"
 
-int ck_mysql_init_ex(const mysql_connection_t *uri, void **hp)
+int cc_mysql_init_ex(const mysql_connection_t *uri, void **hp)
 {
     unsigned int timeout;
     unsigned long options;
@@ -57,7 +57,9 @@ int ck_mysql_init_ex(const mysql_connection_t *uri, void **hp)
 }
 
 static MYSQL *mysql_handle = NULL;
-int ck_mysql_init(const mysql_connection_t *uri)
+int cc_mysql_init(const mysql_connection_t *uri)\
+    
+    
 {
     if (mysql_handle) {
         mysql_close(mysql_handle);
@@ -67,7 +69,7 @@ int ck_mysql_init(const mysql_connection_t *uri)
     return ck_mysql_init_ex(uri, (void **)&mysql_handle);
 }
 
-int ck_mysql_exec_batch(const char *sql, size_t len, void **outp)
+int cc_mysql_exec_batch(const char *sql, size_t len, void **outp)
 {
     struct timeval start,end;
     gettimeofday(&start,NULL);
@@ -105,7 +107,7 @@ int ck_mysql_exec_batch(const char *sql, size_t len, void **outp)
 
     return rc;
 }
-int ck_mysql_exec(const char *sql, size_t len, void **outp)
+int cc_mysql_exec(const char *sql, size_t len, void **outp)
 {
     struct timeval start,end;
     gettimeofday(&start,NULL);
@@ -139,7 +141,7 @@ int ck_mysql_exec(const char *sql, size_t len, void **outp)
     return rc;
 }
 
-int ck_mysql_exec_ex(const char *sql, size_t len, fetch_callback callback,
+int cc_mysql_exec_ex(const char *sql, size_t len, fetch_callback callback,
                    void *data)
 {
     int rc;
@@ -204,7 +206,7 @@ int ck_mysql_exec_ex(const char *sql, size_t len, fetch_callback callback,
     return 0;
 }
 
-size_t ck_mysql_escape_string(const char *from, size_t len, char *to)
+size_t cc_mysql_escape_string(const char *from, size_t len, char *to)
 {
     return mysql_real_escape_string(mysql_handle, to, from, len);
 }
@@ -218,7 +220,7 @@ void ck_mysql_close()
     }
 }
 
-char *ck_mysql_read_file(const char *filename, long *size)
+char *cc_mysql_read_file(const char *filename, long *size)
 {
     FILE *f = fopen(filename, "rb");
     char *string = NULL;
@@ -242,46 +244,12 @@ char *ck_mysql_read_file(const char *filename, long *size)
     return string;
 }
 
-int ck_mysql_parse_conf_ex(mysql_connection_t *tokengen_uri)
-{
-    dictionary *ini;
-    char *str_ini;
-    ini = iniparser_load("/etc/my.cnf");//parser the file
-    if(ini == NULL)
-    {
-        return -1;
-    }
-    tokengen_uri->host = "127.0.0.1";
-    tokengen_uri->dbname = "cloudkeeper";
-    str_ini = iniparser_getstring(ini,"mysqld_multi:user",NULL);
-    if(str_ini)
-    {
-        tokengen_uri->username = str_ini;
-    }
-    str_ini = iniparser_getstring(ini,"mysqld_multi:password",NULL);
-    if(str_ini)
-    {
-        tokengen_uri->password = str_ini;
-    }
 
-    str_ini = iniparser_getstring(ini,"mysqld1:port",NULL);
-    if(str_ini)
-    {
-        tokengen_uri->port = atoi(str_ini);
-    }
-    str_ini = iniparser_getstring(ini,"mysqld1:socket",NULL);
-    if(str_ini)
-    {
-        tokengen_uri->socket = str_ini;
-    }
-    iniparser_freedict(ini);//free dirctionary obj
-    return 0;
-}
-
-int ck_mysql_parse_conf(mysql_connection_t *tokengen_uri)
+  
+int cc_mysql_parse_conf(mysql_connection_t *tokengen_uri)
 {
     long config_size;
-    char * json = ck_mysql_read_file("/csg/config/mysql_conf.json",&config_size);
+    char * json = ck_mysql_read_file("mysql_conf.json",&config_size);
     struct json_object *new_obj,*option_obj,*tmp_obj;
     if(json == NULL)
     {
