@@ -68,7 +68,7 @@ int test_abnormal_query()
     MYSQL_RES         *result;
 
     len = snprintf(sql, sizeof(sql), "SELECT id,name,label,type_id FROM "
-                   "casb_field_tokenization_algo");
+                   "");
     for (i=0; i<10; ++i) {
         result = NULL;
         if (ck_mysql_exec(sql, len, (void **)&result) || result == NULL)
@@ -100,7 +100,7 @@ int test_insert()
     char sql[1024];
 
     printf("%-20s", "INSERT...");
-    len = snprintf(sql, sizeof(sql), "INSERT INTO casb_field_tokenization_algo(id,name,type_id) "
+    len = snprintf(sql, sizeof(sql), "INSERT INTO (id,name,type_id) "
                    "VALUES(1000000,'Test Algo', 1000000)");
     if (cc_mysql_exec(sql, len, NULL))
         return 1;
@@ -115,14 +115,14 @@ int test_update_delete()
     char sql[1024];
 
     printf("%-20s", "UPDATE...");
-    len = snprintf(sql, sizeof(sql), "UPDATE casb_field_tokenization_algo SET type_id=20000 "
+    len = snprintf(sql, sizeof(sql), "UPDATE  SET type_id=20000 "
                    "WHERE id=1000000");
     if (cc_mysql_exec(sql, len, NULL))
         return 4;
     printf("ok\n");
 
     printf("%-20s", "DELETE...");
-    len = snprintf(sql, sizeof(sql), "DELETE FROM casb_field_tokenization_algo WHERE id=1000000");
+    len = snprintf(sql, sizeof(sql), "DELETE FROM  WHERE id=1000000");
     if (cc_mysql_exec(sql, len, NULL))
         return 5;
     printf("ok\n");
@@ -137,7 +137,7 @@ int test_excape_string(const char *fname, const char *path)
 
     printf("\n============ No Escape Case ============\n");
     len = snprintf(sql, sizeof(sql),
-                   "INSERT INTO casb_file_token_mapping(fname,upload_date,md5,sha1,store_path) "
+                   "INSERT INTO (fname,upload_date,md5,sha1,store_path) "
                    "VALUES('%s', 0,'','','%s');", fname, path);
 
     printf("orig: %s(%zu)\n", sql, len);
@@ -150,7 +150,7 @@ int test_excape_string(const char *fname, const char *path)
     estr = (char *) calloc(1, 2*valsz + 1);
     len = cc_mysql_escape_string(fname, valsz, estr);
     len = snprintf(sql, sizeof(sql),
-                   "INSERT INTO casb_file_token_mapping(fname,upload_date,md5,sha1,store_path) "
+                   "INSERT INTO (fname,upload_date,md5,sha1,store_path) "
                    "VALUES('%s', 0,'','','%s');", estr, path);
     printf("escape: %s(%zu)\n", sql, len);
     free(estr);
