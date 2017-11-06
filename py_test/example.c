@@ -5,7 +5,7 @@
 #include <json-c/json_object.h>
 
 #include <assert.h>
-#include "ck_common_mysql.h"
+#include "cc_common_mysql.h"
 
 static int load_algo_callback(void *info_obj, int num, char **row, unsigned long *lengths)
 {
@@ -81,10 +81,10 @@ int test_abnormal_query()
     for (i=0; i<10; ++i) {
         result = NULL;
         if (i < 5) {
-            if (ck_mysql_exec_ex(sql, len, abort_callback, &i))
+            if (cc_mysql_exec_ex(sql, len, abort_callback, &i))
                 return 8;
         } else {
-            if (ck_mysql_exec_ex(sql, len, NULL, &i))
+            if (cc_mysql_exec_ex(sql, len, NULL, &i))
                 return 8;
         }
 
@@ -102,7 +102,7 @@ int test_insert()
     printf("%-20s", "INSERT...");
     len = snprintf(sql, sizeof(sql), "INSERT INTO casb_field_tokenization_algo(id,name,type_id) "
                    "VALUES(1000000,'Test Algo', 1000000)");
-    if (ck_mysql_exec(sql, len, NULL))
+    if (cc_mysql_exec(sql, len, NULL))
         return 1;
     printf("ok\n");
 
@@ -117,13 +117,13 @@ int test_update_delete()
     printf("%-20s", "UPDATE...");
     len = snprintf(sql, sizeof(sql), "UPDATE casb_field_tokenization_algo SET type_id=20000 "
                    "WHERE id=1000000");
-    if (ck_mysql_exec(sql, len, NULL))
+    if (cc_mysql_exec(sql, len, NULL))
         return 4;
     printf("ok\n");
 
     printf("%-20s", "DELETE...");
     len = snprintf(sql, sizeof(sql), "DELETE FROM casb_field_tokenization_algo WHERE id=1000000");
-    if (ck_mysql_exec(sql, len, NULL))
+    if (cc_mysql_exec(sql, len, NULL))
         return 5;
     printf("ok\n");
 
@@ -142,20 +142,20 @@ int test_excape_string(const char *fname, const char *path)
 
     printf("orig: %s(%zu)\n", sql, len);
 
-    if (ck_mysql_exec(sql, len, NULL))
+    if (cc_mysql_exec(sql, len, NULL))
         printf("expect error\n");
 
     printf("\n============ Escape Case ============\n");
     valsz = strlen(fname);
     estr = (char *) calloc(1, 2*valsz + 1);
-    len = ck_mysql_escape_string(fname, valsz, estr);
+    len = cc_mysql_escape_string(fname, valsz, estr);
     len = snprintf(sql, sizeof(sql),
                    "INSERT INTO casb_file_token_mapping(fname,upload_date,md5,sha1,store_path) "
                    "VALUES('%s', 0,'','','%s');", estr, path);
     printf("escape: %s(%zu)\n", sql, len);
     free(estr);
 
-    if (ck_mysql_exec(sql, len, NULL))
+    if (cc_mysql_exec(sql, len, NULL))
         return 1;
 
     return 0;
@@ -168,7 +168,7 @@ int main(int argc, char *argv[])
     uri.port = 3306;
     uri.username = "root";
     uri.password = "root";
-    uri.dbname = "cloudkeeper";
+    uri.dbname = "";
 
     if (ck_mysql_init(&uri))
         return 1;
@@ -188,6 +188,6 @@ int main(int argc, char *argv[])
     assert(test_update_delete() == 0);
     assert(test_abnormal_query() == 0);
 
-    ck_mysql_close();
+    cc_mysql_close();
     return 0;
 }
